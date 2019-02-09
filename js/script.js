@@ -112,7 +112,17 @@ function getRandomQuote(array){
 
 function printQuote(array){
   let obj = getRandomQuote(array);
-  
+  let html = "";
+    html +="<p class ='quote'>" +  obj.quote + "</h1>";
+    html += "<p clas ='source'>-" + obj.source + "</p>";
+      if(obj["citation"] !== ""){
+        html += "<span class='citation'> Citation: " + obj.citation;
+      }
+      if(obj["year"] !== ""){
+        html += "<span class='year'>Year: " + obj.year;
+      }
+
+      return document.getElementById('quote-box').innerHTML = html;
 }
 
 
