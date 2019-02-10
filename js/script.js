@@ -116,10 +116,10 @@ function printQuote(array){
     html +="<p class ='quote'>" +  obj.quote + "</p>";
     html += "<p clas ='source'>-" + obj.source + "</p>";
       if(obj.citation !== ""){
-        html += "<span class='citation'> Citation: " + obj.citation + "</span>";
+        html += "<span class='citation'> " + obj.citation + "</span>";
       }
       if(obj.year !== ""){
-        html += "<span class='year'>Year: " + obj.year + "</span>";
+        html += "<span class='year'> " + obj.year + "</span>";
       }
       return document.getElementById('quote-box').innerHTML = html;
 }
