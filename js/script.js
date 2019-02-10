@@ -111,7 +111,7 @@ function getRandomQuote(array){
 ***/
 
 function printQuote(array){
-  let obj = getRandomQuote(array);
+  let obj = getRandomQuote(quotes);
   let html = "";
     html +="<p class ='quote'>" +  obj.quote + "</p>";
     html += "<p clas ='source'>-" + obj.source + "</p>";
