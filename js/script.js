@@ -110,7 +110,7 @@ function getRandomQuote(array){
    - set the `innerHTML` of the `quote-box` div to the HTML string.
 ***/
 
-function printQuote(array){
+function printQuote(){
   let obj = getRandomQuote(quotes);
   let html = "";
     html +="<p class ='quote'>" +  obj.quote + "</p>";
