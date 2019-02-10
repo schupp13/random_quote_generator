@@ -113,15 +113,14 @@ function getRandomQuote(array){
 function printQuote(array){
   let obj = getRandomQuote(array);
   let html = "";
-    html +="<p class ='quote'>" +  obj.quote + "</h1>";
+    html +="<p class ='quote'>" +  obj.quote + "</p>";
     html += "<p clas ='source'>-" + obj.source + "</p>";
       if(obj["citation"] !== ""){
-        html += "<span class='citation'> Citation: " + obj.citation;
+        html += "<span class='citation'> Citation: " + obj.citation + "</span>";
       }
       if(obj["year"] !== ""){
-        html += "<span class='year'>Year: " + obj.year;
+        html += "<span class='year'>Year: " + obj.year + "</span>";
       }
-
       return document.getElementById('quote-box').innerHTML = html;
 }
 
@@ -137,3 +136,5 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
+
+printQuote(quotes);
