@@ -115,10 +115,10 @@ function printQuote(array){
   let html = "";
     html +="<p class ='quote'>" +  obj.quote + "</p>";
     html += "<p clas ='source'>-" + obj.source + "</p>";
-      if(obj["citation"] !== ""){
+      if(obj.citation !== ""){
         html += "<span class='citation'> Citation: " + obj.citation + "</span>";
       }
-      if(obj["year"] !== ""){
+      if(obj.year !== ""){
         html += "<span class='year'>Year: " + obj.year + "</span>";
       }
       return document.getElementById('quote-box').innerHTML = html;
