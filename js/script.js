@@ -1,22 +1,18 @@
 /******************************************
 Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
+By Philip Schultz
 ******************************************/
 
-// Study guide for this project - https://drive.google.com/file/d/1s5grutGuQFwJcQP8bFwEI69Q8FCkGdDk/view?usp=sharing
-
-
-
 /***
-  Create the array of quote objects and name it `quotes`.
-  Add at least five quote objects to the `quotes` array.
-  Give each quote object a `quote` and `source` property.
-
-  Recommended:
-    - Add at least one `year` and/or `citation` property to at least one
-      quote object.
+The purpose of this program is to generate a random quote to the browser whenever the user pushes a button, or when 20 seconds has past with no interation.
 ***/
 
+/*
+  The constant variable 'quote'  is an array of objects, each object contains a quote and the source (person that said it) of that quote,
+  the object may also contain a citation, year, and tag, but it does not have to.
+  All of my quotes have the quote, source and a tag property , but only one quote has all properties filled and it is at index 0
+  */
 const quotes = [
   {
     quote: "“I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin, but by the content of their character,",
@@ -100,10 +96,8 @@ const quotes = [
 
 
 /***
-  Create the `getRandomQuote` function to:
-   - generate a random number
-   - use the random number to `return` a random quote object from the
-     `quotes` array.
+`getRandomQuote`:
+functions is made to accept an array and return a random index/item within the arrray
 ***/
 
 function getRandomQuote(array){
@@ -112,13 +106,11 @@ function getRandomQuote(array){
 
 
 /***
-  Create the `printQuote` function to:
-   - call the `getRandomQuote` function and assign it to a variable.
-   - use the properties of the quote object stored in the variable to
-     create your HTML string.
-   - use conditionals to make sure the optional properties exist before
-     they are added to the HTML string.
-   - set the `innerHTML` of the `quote-box` div to the HTML string.
+`printQuote` function:
+   - accepts an array of quotes.
+   - call the `getRandomQuote` function and assign it to a variable. (send it the array of quotes)
+   - builds an html string
+   - returns to
 ***/
 
 function printQuote(array_of_quotes){
@@ -126,18 +118,30 @@ function printQuote(array_of_quotes){
   let html = "";
   html +="<p class ='quote'>" +  random_quote.quote + "</p>";
   html += "<p clas ='source'>-" + random_quote.source + "</p>";
+  // testing to see if there is a citation, if there is, it will be added to the page in a span element
   if(random_quote.citation !== ""){
     html += "<span class='citation'> " + random_quote.citation + "</span>";
   }
+
+  // testing to see if there is a year, if there is, it will be added to the page in a span element
   if(random_quote.year !== ""){
     html += "<span class='year'> " + random_quote.year + "</span><br>";
   }
+
+  // testing to see if there is a tag, if there is, it will be added to the page in a paragragh element
   if(random_quote.tag !== ""){
     html += "<br><p class='tag'> " + random_quote.tag + "</p>";
   }
   return document.getElementById('quote-box').innerHTML = html;
 }
 
+/*
+getRandomRGB:
+ - funciton creates a random RGB number 0-255, for variables- red, green and blue
+ - creates a RGB string using the random numbers
+ - the string is assigned to the statement- document.body.style.background ,
+ which will change the entire background color of the document when called.
+*/
 function getRandomRGB(){
   let red = Math.floor(Math.random() * 256);
   let green = Math.floor(Math.random() * 256);
@@ -150,14 +154,11 @@ function getRandomRGB(){
 /***
   When the "Show another quote" button is clicked, the event listener
   below will be triggered, and it will call, or "invoke", the `printQuote`
-  function. So do not make any changes to the line of code below this
-  comment.
+   and the 'getRandomRGB'functions.
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", function(){printQuote(quotes); getRandomRGB();});
 
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
 // I'm calling my function here so the page initialy starts with one of my random quotes.
 printQuote(quotes);
+//setInterval(1000, printQuote(quotes); getRandomRGB());
