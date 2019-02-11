@@ -153,12 +153,12 @@ function getRandomRGB(){
 
 /*
 below is a setInterval fuction, this function will repeat by itself every 20 seconds (20,000 miliseconds).
-Everytime i repeates it calls the printQuote and getRandomRGB function. 
+Everytime i repeates it calls the printQuote and getRandomRGB function.
 */
 setInterval(function(){
   printQuote(quotes);
   getRandomRGB();
-}, 2000)
+}, 20000)
 
 /***
   When the "Show another quote" button is clicked, the event listener
