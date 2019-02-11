@@ -22,67 +22,78 @@ const quotes = [
     quote: "“I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin, but by the content of their character,",
     source:"Dr. Martin Luther King",
     citation:"'I have a dream' speech from the steps of the Lincoln Memorial in Washington.",
-    year:"1963"
+    year:"1963",
+    tag:"Politics"
   },
   {
     quote: "You know you’re in love when you can’t fall asleep because reality is finally better than your dreams.",
     source:"Dr. Suess",
     citation:"",
-    year:""
+    year:"",
+    tag:"Artist"
   },
   {
     quote: "I’m selfish, impatient and a little insecure. I make mistakes, I am out of control and at times hard to handle. But if you can’t handle me at my worst, then you sure as hell don’t deserve me at my best.",
     source:"Marilyn Monroe",
     citation:"",
-    year:""
+    year:"",
+    tag:"Pop Culture"
   },
   {
     quote: "Get busy living or get busy dying.",
     source:"Stephen King",
     citation:"",
-    year:""
+    year:"",
+    tag:"Motivational"
   },
   {
     quote: "The first step toward success is taken when you refuse to be a captive of the environment in which you first find yourself.",
     source:"Mark Caine",
     citation:"",
-    year:""
+    year:"",
+    tag:"Motivational"
   },
   {
     quote: "When one door of happiness closes, another opens; but often we look so long at the closed door that we do not see the one which has been opened for us.",
     source:"Helen Keller",
     citation:"",
-    year:""
+    year:"",
+    tag:"Motivational"
   },
   {
     quote: "Twenty years from now you will be more disappointed by the things that you didn’t do than by the ones you did do.",
     source:"Mark Twain",
     citation:"",
-    year:""
+    year:"",
+    tag:"Motivational"
   },
   {
     quote: "When I dare to be powerful – to use my strength in the service of my vision, then it becomes less and less important whether I am afraid.",
     source:"Audre Lorde",
     citation:"",
-    year:""
+    year:"",
+    tag:"Motivational"
   },
   {
     quote: "Great minds discuss ideas; average minds discuss events; small minds discuss people.",
     source:"Eleanor Roosevelt",
     citation:"",
-    year:""
+    year:"",
+    tag:"Philosophical"
   },
   {
     quote: "A successful man is one who can lay a firm foundation with the bricks others have thrown at him.",
     source:"David Brinkley",
     citation:"",
-    year:""
+    year:"",
+    tag:"Motivational"
   },
   {
     quote: "Those who dare to fail miserably can achieve greatly.",
     source:"John F. Kennedy",
     citation:"",
-    year:""
+    year:"",
+    tag:"Motivational"
   }
 
 ];
@@ -110,18 +121,21 @@ function getRandomQuote(array){
    - set the `innerHTML` of the `quote-box` div to the HTML string.
 ***/
 
-function printQuote(array){
-  let obj = getRandomQuote(array);
+function printQuote(array_of_quotes){
+  let random_quote = getRandomQuote(array_of_quotes);
   let html = "";
-    html +="<p class ='quote'>" +  obj.quote + "</p>";
-    html += "<p clas ='source'>-" + obj.source + "</p>";
-      if(obj.citation !== ""){
-        html += "<span class='citation'> " + obj.citation + "</span>";
-      }
-      if(obj.year !== ""){
-        html += "<span class='year'> " + obj.year + "</span>";
-      }
-      return document.getElementById('quote-box').innerHTML = html;
+  html +="<p class ='quote'>" +  random_quote.quote + "</p>";
+  html += "<p clas ='source'>-" + random_quote.source + "</p>";
+  if(random_quote.citation !== ""){
+    html += "<span class='citation'> " + random_quote.citation + "</span>";
+  }
+  if(random_quote.year !== ""){
+    html += "<span class='year'> " + random_quote.year + "</span><br>";
+  }
+  if(random_quote.tag !== ""){
+    html += "<br><p class='tag'> " + random_quote.tag + "</p>";
+  }
+  return document.getElementById('quote-box').innerHTML = html;
 }
 
 function getRandomRGB(){
@@ -129,8 +143,8 @@ function getRandomRGB(){
   let green = Math.floor(Math.random() * 256);
   let blue = Math.floor(Math.random() * 256);
   let randomColor = "";
-   randomColor += "RGB(" + red + ", " + green + ", " + blue + ")";
-   return document.body.style.backgroundColor = randomColor;
+  randomColor += "RGB(" + red + ", " + green + ", " + blue + ")";
+  return document.body.style.backgroundColor = randomColor;
 }
 
 /***

@@ -43,7 +43,7 @@ body {
 }
 
 .source {
-  font-size: 1.25rem;;
+  font-size: 1.25rem;
   letter-spacing: 0.05em;
   line-height: 1.1;
   text-align: right;
@@ -54,18 +54,35 @@ body {
   content: "—";
 }
 
+.source::after{
+  content:", ";
+}
+
 .citation {
   font-style: italic;
 }
 
 .citation:before {
-  content: ", ";
+  content: "";
   font-style: normal;
 }
 
 .year:before {
   content: ", ";
   font-style: normal;
+}
+
+.tag{
+  font-style: bold;
+  font-size:25px;
+  margin: 10px;
+}
+.tag:before{
+  content: "~";
+
+}
+.tag:after{
+  content: "~";
 }
 
 #loadQuote {
