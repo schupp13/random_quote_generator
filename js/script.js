@@ -151,6 +151,15 @@ function getRandomRGB(){
   return document.body.style.backgroundColor = randomColor;
 }
 
+/*
+below is a setInterval fuction, this function will repeat by itself every 20 seconds (20,000 miliseconds).
+Everytime i repeates it calls the printQuote and getRandomRGB function. 
+*/
+setInterval(function(){
+  printQuote(quotes);
+  getRandomRGB();
+}, 2000)
+
 /***
   When the "Show another quote" button is clicked, the event listener
   below will be triggered, and it will call, or "invoke", the `printQuote`
@@ -158,6 +167,8 @@ function getRandomRGB(){
 ***/
 
 document.getElementById('loadQuote').addEventListener("click", function(){printQuote(quotes); getRandomRGB();});
+
+
 
 // I'm calling my function here so the page initialy starts with one of my random quotes.
 printQuote(quotes);
