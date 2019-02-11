@@ -124,6 +124,14 @@ function printQuote(array){
       return document.getElementById('quote-box').innerHTML = html;
 }
 
+function getRandomRGB(){
+  let red = Math.floor(Math.random() * 256);
+  let green = Math.floor(Math.random() * 256);
+  let blue = Math.floor(Math.random() * 256);
+  let randomColor = "";
+   randomColor += "RGB(" + red + ", " + green + ", " + blue + ")";
+   return document.body.style.backgroundColor = randomColor;
+}
 
 /***
   When the "Show another quote" button is clicked, the event listener
@@ -132,9 +140,10 @@ function printQuote(array){
   comment.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", function(){printQuote(quotes); getRandomRGB();});
+
 
 
 // Remember to delete the comments that came with this file, and replace them with your own code comments.
-
+// I'm calling my function here so the page initialy starts with one of my random quotes.
 printQuote(quotes);
