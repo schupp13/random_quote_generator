@@ -91,19 +91,15 @@ const quotes = [
     year:"",
     tag:"Motivational"
   }
-
 ];
-
 
 /***
 `getRandomQuote`:
 functions is made to accept an array and return a random index/item within the arrray
 ***/
-
 function getRandomQuote(array){
   return array[Math.floor(Math.random() * array.length)];
 }
-
 
 /***
 `printQuote` function:
@@ -112,12 +108,11 @@ function getRandomQuote(array){
    - builds an html string
    - returns to
 ***/
-
 function printQuote(array_of_quotes){
   let random_quote = getRandomQuote(array_of_quotes);
   let html = "";
   html +="<p class ='quote'>" +  random_quote.quote + "</p>";
-  html += "<p clas ='source'>-" + random_quote.source + "</p>";
+  html += "<p clas ='source'>-" + random_quote.source ;
   // testing to see if there is a citation, if there is, it will be added to the page in a span element
   if(random_quote.citation !== ""){
     html += "<span class='citation'> " + random_quote.citation + "</span>";
@@ -127,6 +122,7 @@ function printQuote(array_of_quotes){
   if(random_quote.year !== ""){
     html += "<span class='year'> " + random_quote.year + "</span><br>";
   }
+  html += "</p>";
 
   // testing to see if there is a tag, if there is, it will be added to the page in a paragragh element
   if(random_quote.tag !== ""){
@@ -172,4 +168,3 @@ document.getElementById('loadQuote').addEventListener("click", function(){printQ
 
 // I'm calling my function here so the page initialy starts with one of my random quotes.
 printQuote(quotes);
-//setInterval(1000, printQuote(quotes); getRandomRGB());
