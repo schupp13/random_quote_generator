@@ -17,7 +17,7 @@ const quotes = [
   {
     quote: "“I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin, but by the content of their character,",
     source:"Dr. Martin Luther King",
-    citation:"'I have a dream' speech from the steps of the Lincoln Memorial in Washington.",
+    citation:"'I have a dream' speech at the Lincoln Memorial in Washington.",
     year:"1963",
     tag:"Politics"
   },
