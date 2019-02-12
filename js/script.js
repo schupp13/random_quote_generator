@@ -19,7 +19,7 @@ const quotes = [
     source:"Dr. Martin Luther King",
     citation:"'I have a dream' speech at the Lincoln Memorial in Washington.",
     year:"1963",
-    tag:"Politics"
+    tag:"Political"
   },
   {
     quote: "You know you’re in love when you can’t fall asleep because reality is finally better than your dreams.",
@@ -101,6 +101,20 @@ function getRandomQuote(array){
   return array[Math.floor(Math.random() * array.length)];
 }
 
+function setTimer(){
+  let myTimer;
+  clearInterval(myTimer);
+  myTimer = setInterval(function(){printQuote(array_of_quotes);getRandomRGB();}, 20000);
+
+
+  /*
+  below is a setInterval fuction, this function will repeat by itself every 20 seconds (20,000 miliseconds).
+  Everytime i repeates it calls the printQuote and getRandomRGB function.
+  */
+
+}
+
+
 /***
 `printQuote` function:
    - accepts an array of quotes.
@@ -109,6 +123,7 @@ function getRandomQuote(array){
    - returns to
 ***/
 function printQuote(array_of_quotes){
+  //calling the getRandomQuote function and storing the result (an object) in the variable 'random_quote'
   let random_quote = getRandomQuote(array_of_quotes);
   let html = "";
   html +="<p class ='quote'>" +  random_quote.quote + "</p>";
@@ -128,6 +143,8 @@ function printQuote(array_of_quotes){
   if(random_quote.tag !== ""){
     html += "<br><p class='tag'> " + random_quote.tag + "</p>";
   }
+
+
   return document.getElementById('quote-box').innerHTML = html;
 }
 
@@ -147,14 +164,6 @@ function getRandomRGB(){
   return document.body.style.backgroundColor = randomColor;
 }
 
-/*
-below is a setInterval fuction, this function will repeat by itself every 20 seconds (20,000 miliseconds).
-Everytime i repeates it calls the printQuote and getRandomRGB function.
-*/
-setInterval(function(){
-  printQuote(quotes);
-  getRandomRGB();
-}, 20000)
 
 /***
   When the "Show another quote" button is clicked, the event listener
