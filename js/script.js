@@ -15,7 +15,7 @@ The purpose of this program is to generate a random quote to the browser wheneve
   */
 const quotes = [
   {
-    quote: "“I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin, but by the content of their character,",
+    quote: "I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin, but by the content of their character,",
     source:"Dr. Martin Luther King",
     citation:"'I have a dream' speech at the Lincoln Memorial in Washington.",
     year:"1963",
@@ -101,17 +101,18 @@ function getRandomQuote(array){
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function setTimer(){
-  let myTimer;
-  clearInterval(myTimer);
-  myTimer = setInterval(function(){printQuote(array_of_quotes);getRandomRGB();}, 20000);
 
+/*
+below is a setInterval fuction, this function will repeat by itself every 20 seconds (20,000 miliseconds).
+Everytime i repeates it calls the printQuote and getRandomRGB function.
+*/
 
-  /*
-  below is a setInterval fuction, this function will repeat by itself every 20 seconds (20,000 miliseconds).
-  Everytime i repeates it calls the printQuote and getRandomRGB function.
-  */
+function setCountDown(array){
+   return setInterval(function(){printQuote(array); getRandomRGB();}, 5000);
+}
 
+function clearCountDown(intID){
+  clearInterval(intID);
 }
 
 
@@ -123,11 +124,14 @@ function setTimer(){
    - returns to
 ***/
 function printQuote(array_of_quotes){
+  let set_time = setCountDown(array_of_quotes);
   //calling the getRandomQuote function and storing the result (an object) in the variable 'random_quote'
   let random_quote = getRandomQuote(array_of_quotes);
+  clearInterval();
   let html = "";
   html +="<p class ='quote'>" +  random_quote.quote + "</p>";
   html += "<p clas ='source'>-" + random_quote.source ;
+
   // testing to see if there is a citation, if there is, it will be added to the page in a span element
   if(random_quote.citation !== ""){
     html += "<span class='citation'> " + random_quote.citation + "</span>";
@@ -135,7 +139,7 @@ function printQuote(array_of_quotes){
 
   // testing to see if there is a year, if there is, it will be added to the page in a span element
   if(random_quote.year !== ""){
-    html += "<span class='year'> " + random_quote.year + "</span><br>";
+    html += "<span class='year'> " + random_quote.year + "</span>";
   }
   html += "</p>";
 
@@ -171,9 +175,12 @@ function getRandomRGB(){
    and the 'getRandomRGB'functions.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", function(){printQuote(quotes); getRandomRGB();});
+document.getElementById('loadQuote').addEventListener("click", function(){clearInterval(timeID);  printQuote(quotes); getRandomRGB(); });
 
 
 
 // I'm calling my function here so the page initialy starts with one of my random quotes.
+
 printQuote(quotes);
+let timeID = setCountDown(quotes);
+//setInterval(function(){printQuote(quotes); getRandomRGB();}, 1000);
