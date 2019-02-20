@@ -127,7 +127,7 @@ function printQuote(array_of_quotes){
   let set_time = setCountDown(array_of_quotes);
   //calling the getRandomQuote function and storing the result (an object) in the variable 'random_quote'
   let random_quote = getRandomQuote(array_of_quotes);
-  clearInterval();
+  
   let html = "";
   html +="<p class ='quote'>" +  random_quote.quote + "</p>";
   html += "<p clas ='source'>-" + random_quote.source ;
