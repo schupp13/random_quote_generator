@@ -101,33 +101,19 @@ function getRandomQuote(array){
   return array[Math.floor(Math.random() * array.length)];
 }
 
-
 /*
-below is a setInterval fuction, this function will repeat by itself every 20 seconds (20,000 miliseconds).
-Everytime i repeates it calls the printQuote and getRandomRGB function.
-*/
-
-function setCountDown(array){
-   return setInterval(function(){printQuote(array); getRandomRGB();}, 5000);
-}
-
-function clearCountDown(intID){
-  clearInterval(intID);
-}
-
-
-/***
 `printQuote` function:
    - accepts an array of quotes.
    - call the `getRandomQuote` function and assign it to a variable. (send it the array of quotes)
    - builds an html string
    - returns to
-***/
+*/
 function printQuote(array_of_quotes){
-  let set_time = setCountDown(array_of_quotes);
+  let button_interval_id = timer(array_of_quotes);
+  clearTimer(button_interval_id);
   //calling the getRandomQuote function and storing the result (an object) in the variable 'random_quote'
   let random_quote = getRandomQuote(array_of_quotes);
-  
+
   let html = "";
   html +="<p class ='quote'>" +  random_quote.quote + "</p>";
   html += "<p clas ='source'>-" + random_quote.source ;
@@ -175,12 +161,22 @@ function getRandomRGB(){
    and the 'getRandomRGB'functions.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", function(){clearInterval(timeID);  printQuote(quotes); getRandomRGB();setCountDown });
+document.getElementById('loadQuote').addEventListener("click", function(){clearInterval(intervalID); printQuote(quotes); getRandomRGB();});
 
 
 
-// I'm calling my function here so the page initialy starts with one of my random quotes.
+// I'm calling my pritQuote function and getRandomRGB here so the page initialy starts with one of my random quotes and a Random color.
 
 printQuote(quotes);
-let timeID = setCountDown(quotes);
-//setInterval(function(){printQuote(quotes); getRandomRGB();}, 1000);
+getRandomRGB();
+
+//  A function that simply
+function timer(quotes_array){
+  return setInterval(function(){printQuote(quotes_array); getRandomRGB();}, 20000,);
+}
+
+function clearTimer(timerID){
+  setTimeout(clearInterval(timerID), 20000);
+}
+let intervalID = timer(quotes);
+console.log(intervalID);
