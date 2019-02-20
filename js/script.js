@@ -175,7 +175,7 @@ function getRandomRGB(){
    and the 'getRandomRGB'functions.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", function(){clearInterval(timeID);  printQuote(quotes); getRandomRGB(); });
+document.getElementById('loadQuote').addEventListener("click", function(){clearInterval(timeID);  printQuote(quotes); getRandomRGB();setCountDown });
 
 
 
