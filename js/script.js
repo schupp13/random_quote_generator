@@ -93,12 +93,19 @@ const quotes = [
   }
 ];
 
+let timer=0;
+
+function setTimer(){
+  clearInterval(timer);
+  var timer = setInterval(printQuote, 5000);
+}
+
 /***
 `getRandomQuote`:
 functions is made to accept an array and return a random index/item within the arrray
 ***/
-function getRandomQuote(array){
-  return array[Math.floor(Math.random() * array.length)];
+function getRandomQuote(quotes_array){
+  return quotes_array[Math.floor(Math.random() * quotes_array.length)];
 }
 
 /*
@@ -109,8 +116,6 @@ function getRandomQuote(array){
    - returns to
 */
 function printQuote(array_of_quotes){
-  let button_interval_id = timer(array_of_quotes);
-  clearTimer(button_interval_id);
   //calling the getRandomQuote function and storing the result (an object) in the variable 'random_quote'
   let random_quote = getRandomQuote(array_of_quotes);
 
@@ -133,6 +138,8 @@ function printQuote(array_of_quotes){
   if(random_quote.tag !== ""){
     html += "<br><p class='tag'> " + random_quote.tag + "</p>";
   }
+
+  setTimer();
 
 
   return document.getElementById('quote-box').innerHTML = html;
@@ -161,7 +168,7 @@ function getRandomRGB(){
    and the 'getRandomRGB'functions.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", function(){clearInterval(intervalID); printQuote(quotes); getRandomRGB();});
+document.getElementById('loadQuote').addEventListener("click", function(){printQuote(quotes); getRandomRGB();});
 
 
 
@@ -169,14 +176,4 @@ document.getElementById('loadQuote').addEventListener("click", function(){clearI
 
 printQuote(quotes);
 getRandomRGB();
-
-//  A function that simply
-function timer(quotes_array){
-  return setInterval(function(){printQuote(quotes_array); getRandomRGB();}, 20000,);
-}
-
-function clearTimer(timerID){
-  setTimeout(clearInterval(timerID), 20000);
-}
-let intervalID = timer(quotes);
-console.log(intervalID);
+setTimer();
