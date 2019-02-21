@@ -3,7 +3,6 @@ Treehouse Techdegree:
 FSJS project 1 - A Random Quote Generator
 By Philip Schultz
 ******************************************/
-
 /***
 The purpose of this program is to generate a random quote to the browser whenever the user pushes a button, or when 20 seconds has past with no interation.
 ***/
@@ -11,7 +10,7 @@ The purpose of this program is to generate a random quote to the browser wheneve
 /*
   The constant variable 'quote'  is an array of objects, each object contains a quote and the source (person that said it) of that quote,
   the object may also contain a citation, year, and tag, but it does not have to.
-  All of my quotes have the quote, source and a tag property , but only one quote has all properties filled and it is at index 0
+  All of my quotes have the quote, source and a tag property , but only one quote has all properties filled (citation and year) and it is the MLK quote at index 0
   */
 const quotes = [
   {
@@ -93,8 +92,15 @@ const quotes = [
   }
 ];
 
+//created a global variable that will keep track of the interval.
 let timer=0;
 
+/*
+The 'setTimer' function
+-accepts an array that will be passed to printQuotefunction
+- clears the value (inntervalID) currently held in the global 'timer' variable using the clearInterval funciotn
+- sets a new timer and stores in the global 'timer' variable
+*/
 function setTimer(arry){
   clearInterval(timer);
   timer = setInterval(printQuote, 20000, arry);
@@ -111,9 +117,11 @@ function getRandomQuote(quotes_array){
 /*
 `printQuote` function:
    - accepts an array of quotes.
+   - calls the randomRGB() to pick and apply the random background
    - call the `getRandomQuote` function and assign it to a variable. (send it the array of quotes)
    - builds an html string
-   - returns to
+   - calls the setTimer function to clear the existing timer and to start a new one
+   - returns html string
 */
 function printQuote(array_of_quotes){
   //calling the getRandomQuote function and storing the result (an object) in the variable 'random_quote'
@@ -141,9 +149,10 @@ function printQuote(array_of_quotes){
     html += "<br><p class='tag'> " + random_quote.tag + "</p>";
   }
 
+  // calling the setTimer function to clear the current time time interval and to start a new 20 second refresh timer
   setTimer(array_of_quotes);
 
-
+  // seting the html string to equal the 'quote-box' element to display to the browser
   return document.getElementById('quote-box').innerHTML = html;
 }
 
@@ -174,7 +183,7 @@ document.getElementById('loadQuote').addEventListener("click", function(){printQ
 
 
 
-// I'm calling my pritQuote function and getRandomRGB here so the page initialy starts with one of my random quotes and a Random color.
+// I'm calling my pritQuote,getRandomRGB and setTimer functions here so the page initialy starts with one of my random quotes a Random color and the 20 second refresher.
 
 printQuote(quotes);
 getRandomRGB();
