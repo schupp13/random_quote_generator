@@ -95,9 +95,9 @@ const quotes = [
 
 let timer=0;
 
-function setTimer(){
+function setTimer(arry){
   clearInterval(timer);
-  var timer = setInterval(printQuote, 5000);
+  timer = setInterval(printQuote, 5000, arry);
 }
 
 /***
@@ -117,6 +117,8 @@ function getRandomQuote(quotes_array){
 */
 function printQuote(array_of_quotes){
   //calling the getRandomQuote function and storing the result (an object) in the variable 'random_quote'
+
+  getRandomRGB();
   let random_quote = getRandomQuote(array_of_quotes);
 
   let html = "";
@@ -139,7 +141,7 @@ function printQuote(array_of_quotes){
     html += "<br><p class='tag'> " + random_quote.tag + "</p>";
   }
 
-  setTimer();
+  setTimer(array_of_quotes);
 
 
   return document.getElementById('quote-box').innerHTML = html;
@@ -168,7 +170,7 @@ function getRandomRGB(){
    and the 'getRandomRGB'functions.
 ***/
 
-document.getElementById('loadQuote').addEventListener("click", function(){printQuote(quotes); getRandomRGB();});
+document.getElementById('loadQuote').addEventListener("click", function(){printQuote(quotes); });
 
 
 
@@ -176,4 +178,4 @@ document.getElementById('loadQuote').addEventListener("click", function(){printQ
 
 printQuote(quotes);
 getRandomRGB();
-setTimer();
+setTimer(quotes);
