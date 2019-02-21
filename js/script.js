@@ -97,7 +97,7 @@ let timer=0;
 
 function setTimer(arry){
   clearInterval(timer);
-  timer = setInterval(printQuote, 5000, arry);
+  timer = setInterval(printQuote, 20000, arry);
 }
 
 /***
