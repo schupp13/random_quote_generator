@@ -131,7 +131,7 @@ function printQuote(array_of_quotes){
 
   let html = "";
   html +="<p class ='quote'>" +  random_quote.quote + "</p>";
-  html += "<p clas ='source'>-" + random_quote.source ;
+  html += "<p class ='source'>-" + random_quote.source ;
 
   // testing to see if there is a citation, if there is, it will be added to the page in a span element
   if(random_quote.citation !== ""){
